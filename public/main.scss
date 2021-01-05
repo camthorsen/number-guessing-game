@@ -13,8 +13,13 @@ html {
 body {
   font-family: 'Press Start 2P', sans-serif;
   color: #eee;
-  background-color: #222;
-  /* background-color: #60b347; */
+  background: repeating-linear-gradient(
+                  to bottom,
+                  #0f0a1e,
+                  #0f0a1e 2px,
+                  lighten(#0f0a1e, 3%) 2px,
+                  lighten(#0f0a1e, 3%) 4px
+  )
 }
 
 /* LAYOUT */
@@ -68,11 +73,9 @@ h1 {
   transform: translate(-50%, 50%);
 }
 
-.between {
+.instructions {
   font-size: 1.4rem;
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
+  padding: 2rem;
 }
 
 .again {
@@ -81,9 +84,9 @@ h1 {
   left: 2rem;
 }
 
-.guess {
+.input {
   background: none;
-  border: 4px solid #eee;
+  border: 4px solid deeppink;
   font-family: inherit;
   color: inherit;
   font-size: 5rem;
@@ -92,20 +95,26 @@ h1 {
   text-align: center;
   display: block;
   margin-bottom: 3rem;
+  &:focus {
+    border-color: white;
+  }
 }
 
 .btn {
   border: none;
+  border-radius: 10px;
   background-color: #eee;
-  color: #222;
+  color: #6d6d6d;
   font-size: 2rem;
   font-family: inherit;
   padding: 2rem 3rem;
   cursor: pointer;
-}
+  text-shadow: -1px -1px black, 1px 1px white;
+  box-shadow: 0 .4em gray;
 
-.btn:hover {
-  background-color: #ccc;
+  &:hover {
+
+  }
 }
 
 .message {
