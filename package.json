@@ -4,5 +4,9 @@
   },
   "scripts": {
     "dev": "live-server public"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "sass": "^1.32.0"
   }
 }
