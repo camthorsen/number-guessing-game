@@ -7,12 +7,20 @@ document.querySelector('.secret-number').textContent = secretNumber;
 
 document.querySelector('.btn__check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess-input').value);
+
+  // When there is no input
   if (!guess) {
     document.querySelector('.message').textContent = 'Please type in a guess';
+
+  // When input is decimal
   } else if (guess !== Math.trunc(guess)) {
     document.querySelector('.message').textContent = 'Must be a whole number (no decimals)';
+
+  // When player wins
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'Correct number!';
+
+  // When guess is too high
   } else if (guess > secretNumber && guess <= 20) {
       if (currentScore > 1) {
         document.querySelector('.message').textContent = 'Too high!';
@@ -23,6 +31,8 @@ document.querySelector('.btn__check').addEventListener('click', function () {
         document.querySelector('.score').textContent = currentScore;
         document.querySelector('.message').textContent = 'You lost the game 😱️';
       }
+
+  // When guess is too low
   } else if (guess < secretNumber && guess >= 1) {
     if (currentScore > 1) {
       document.querySelector('.message').textContent = 'Too low!';
@@ -33,6 +43,8 @@ document.querySelector('.btn__check').addEventListener('click', function () {
       document.querySelector('.score').textContent = currentScore;
       document.querySelector('.message').textContent = 'You lost the game 😱️️';
     }
+
+  // When guess is not between 1 - 20
   } else {
     document.querySelector('.message').textContent = 'Number must be between 1 and 20';
   }
