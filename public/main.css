@@ -55,7 +55,7 @@ h1 {
 
 .secret-number {
   background: #eee;
-  color: #333;
+  color: #0f0a1e;
   font-size: 6rem;
   width: 15rem;
   padding: 3rem 0rem;
@@ -79,7 +79,7 @@ h1 {
 
 .guess-input {
   background: none;
-  border: 4px solid deeppink;
+  border: 4px solid #ffb240;
   font-family: inherit;
   color: inherit;
   font-size: 5rem;
@@ -88,9 +88,6 @@ h1 {
   text-align: center;
   display: block;
   margin-bottom: 3rem;
-}
-.guess-input:focus {
-  border-color: white;
 }
 
 .btn {
@@ -110,6 +107,14 @@ h1 {
 }
 .btn:active {
   transform: translateY(2px);
+}
+.btn__restart {
+  background-color: #f66562;
+  color: #7a342e;
+  box-shadow: 0 0.4em #c0514a;
+}
+.btn__restart:hover {
+  background-color: #ee625f;
 }
 
 .message {
