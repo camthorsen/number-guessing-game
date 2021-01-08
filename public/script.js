@@ -14,13 +14,25 @@ document.querySelector('.btn__check').addEventListener('click', function () {
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'Correct number!';
   } else if (guess > secretNumber && guess <= 20) {
-    document.querySelector('.message').textContent = 'Too high!';
-    currentScore -= 1;
-    document.querySelector('.score').textContent = currentScore;
+      if (currentScore > 1) {
+        document.querySelector('.message').textContent = 'Too high!';
+        currentScore -= 1;
+        document.querySelector('.score').textContent = currentScore;
+      } else {
+        currentScore = 0;
+        document.querySelector('.score').textContent = currentScore;
+        document.querySelector('.message').textContent = 'You lost the game 😱️';
+      }
   } else if (guess < secretNumber && guess >= 1) {
-    document.querySelector('.message').textContent = 'Too low!';
-    currentScore -= 1;
-    document.querySelector('.score').textContent = currentScore;
+    if (currentScore > 1) {
+      document.querySelector('.message').textContent = 'Too low!';
+      currentScore -= 1;
+      document.querySelector('.score').textContent = currentScore;
+    } else {
+      currentScore = 0;
+      document.querySelector('.score').textContent = currentScore;
+      document.querySelector('.message').textContent = 'You lost the game 😱️️';
+    }
   } else {
     document.querySelector('.message').textContent = 'Number must be between 1 and 20';
   }
