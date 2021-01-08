@@ -18,6 +18,8 @@ document.querySelector('.btn__check').addEventListener('click', function () {
   } else if (guess === secretNumber) {
     document.querySelector('.secret-number').textContent = secretNumber;
     document.querySelector('.message').textContent = 'Correct number!';
+    document.querySelector('body').style.background = '#60b347';
+    document.querySelector('.secret-number').style.width = '30rem';
 
   // When guess is too high
   } else if (guess > secretNumber && guess <= 20) {
