@@ -1,6 +1,8 @@
 'use strict';
 
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let currentScore = 20;
+
 document.querySelector('.secret-number').textContent = secretNumber;
 
 document.querySelector('.btn__check').addEventListener('click', function () {
@@ -13,8 +15,12 @@ document.querySelector('.btn__check').addEventListener('click', function () {
     document.querySelector('.message').textContent = 'Correct number!';
   } else if (guess > secretNumber && guess <= 20) {
     document.querySelector('.message').textContent = 'Too high!';
+    currentScore -= 1;
+    document.querySelector('.score').textContent = currentScore;
   } else if (guess < secretNumber && guess >= 1) {
     document.querySelector('.message').textContent = 'Too low!';
+    currentScore -= 1;
+    document.querySelector('.score').textContent = currentScore;
   } else {
     document.querySelector('.message').textContent = 'Number must be between 1 and 20';
   }
