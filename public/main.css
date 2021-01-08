@@ -12,7 +12,7 @@ html {
 body {
   font-family: "Press Start 2P", sans-serif;
   color: #eee;
-  background: repeating-linear-gradient(to bottom, #0f0a1e, #0f0a1e 2px, #150e29 2px, #150e29 4px);
+  background: #0f0a1e;
 }
 
 /* LAYOUT */
@@ -71,7 +71,7 @@ h1 {
   padding: 2rem;
 }
 
-.again {
+.btn__restart {
   position: absolute;
   top: 2rem;
   left: 2rem;
