@@ -16,6 +16,7 @@
       <h1>Guess My Number!</h1>
       <button class="btn btn__restart">Restart</button>
       <div class="secret-number">?</div>
+      <button class="btn btn__show-modal show-modal">Help</button>
   </header>
   <main>
       <section class="left">
@@ -31,6 +32,29 @@
           </p>
       </section>
   </main>
+
+  <!-- Modal -->
+  <div class="modal hidden">
+    <button class="btn btn__close-modal close-modal">&times;</button>
+    <h2>How to play</h2>
+    <div class="text-container">
+      <div>
+        <p>
+          It's easy! Guess a number between 1 and 20, and type it into the yellow rectangle, then click "Check".
+        </p>
+        <p>
+          You start off with a score of 20. With each incorrect guess, your score goes down by 1. The goal is to guess
+          the correct number in as few guesses as possible.
+        </p>
+        <p>You can play again using the "Restart" button, and the game will keep track of your highest score.</p>
+      </div>
+    </div>
+    <div class="btn__row">
+      <button class="btn btn__modal-start close-modal">I'm ready to play!</button>
+    </div>
+  </div>
+  <div class="overlay hidden"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
