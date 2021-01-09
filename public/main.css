@@ -16,14 +16,21 @@ body {
 }
 
 /* LAYOUT */
+header,
+main {
+  min-width: 1200px;
+}
+
 header {
   position: relative;
   height: 35vh;
+  min-height: 300px;
   border-bottom: 7px solid #eee;
 }
 
 main {
   height: 65vh;
+  min-height: 400px;
   color: #eee;
   display: flex;
   align-items: center;

@@ -16,17 +16,25 @@ body {
   font-family: 'Press Start 2P', sans-serif;
   color: $color-white-text;
   background: $color-primary-dark;
+
 }
 
 /* LAYOUT */
+header,
+main {
+  min-width: 1200px;
+}
+
 header {
   position: relative;
   height: 35vh;
+  min-height: 300px;
   border-bottom: 7px solid #eee;
 }
 
 main {
   height: 65vh;
+  min-height: 400px;
   color: $color-white-text;
   display: flex;
   align-items: center;
