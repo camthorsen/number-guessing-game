@@ -1,6 +1,6 @@
 'use strict';
 
-/* ------ GAME SCRIPT ------  */
+/* --------------- GAME SCRIPT ---------------  */
 
 const range = 5;
 const instructionText = `Type a number between 1 and ${range}`;
@@ -99,21 +99,31 @@ document.querySelector('.btn__restart').addEventListener('click', function () {
 });
 
 
-/* ------ MODAL SCRIPT ------  */
+/* --------------- MODAL SCRIPT ---------------  */
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelectorAll('.close-modal');
 const btnShowModal = document.querySelector('.show-modal');
 
-btnShowModal.addEventListener('click', function () {
+// FUNCTIONS
+
+function closeModal () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
+function showModal () {
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
-});
+}
+
+// EVENT LISTENERS
 
 for (let i = 0; i < btnCloseModal.length; i += 1) {
-  btnCloseModal[i].addEventListener('click', function () {
-    modal.classList.add('hidden');
-    overlay.classList.add('hidden');
-  });
+  btnCloseModal[i].addEventListener('click', closeModal);
 }
+
+btnShowModal.addEventListener('click', showModal);
+
+overlay.addEventListener('click', closeModal);
