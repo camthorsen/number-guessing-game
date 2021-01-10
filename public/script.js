@@ -1,69 +1,100 @@
 'use strict';
 
-let secretNumber;
-let currentScore = 20;
+const range = 5;
+const instructionText = `Type a number between 1 and ${range}`;
+
+// STATE
+
+let currentScore;
+let guess = Number(document.querySelector('.guess-input').value);
 let highScore = 0;
-const initialMessage = 'Start guessing...';
+let secretNumber;
+
+// FUNCTIONS
+
+function isValidGuess() {
+  // When there is no input
+  if (!guess) {
+    setTextContent('message', 'Please type a number into the box on the left');
+    return false;
+  }
+  // When guess is not between 1 - (range)
+  if (guess < 1 || guess > range) {
+    setTextContent('message', `Number must be between 1 and ${range}`);
+    return false;
+  }
+  // When input is a decimal
+  if (guess !== Math.trunc(guess)) {
+    setTextContent('message', 'Guess must be a whole number (no decimals)');
+    return false;
+  }
+  return true;
+}
+
+function generateNewSecretNumber() {
+  secretNumber = Math.trunc(Math.random() * range) + 1;
+}
+
+function loseGame() {
+  currentScore = 0;
+  setTextContent('score', currentScore);
+  setTextContent('secret-number', secretNumber);
+  setTextContent('message', 'You lost the game 😱️');
+}
 
 function setTextContent(targetClass, newContent) {
   return document.querySelector(`.${targetClass}`).textContent = newContent;
 }
-function generateNewSecretNumber() {
-  secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+function startGame() {
+  generateNewSecretNumber();
+  currentScore = range;
+  setTextContent('secret-number', '?');
+  setTextContent('score', currentScore);
+  setTextContent('message', 'Start guessing...');
+  document.querySelector('.guess-input').value = '';
+  document.querySelector('.secret-number').style.width = '15rem';
+  document.querySelector('body').style.backgroundColor = '#0f0a1e';
 }
 
-generateNewSecretNumber();
+function winGame() {
+  setTextContent('secret-number', secretNumber);
+  setTextContent('message', 'You guessed it! 🎉');
+  document.querySelector('body').style.background = '#60b347';
+  document.querySelector('.secret-number').style.width = '30rem';
+  if (currentScore > highScore) {
+    highScore = currentScore;
+    setTextContent('highscore', highScore);
+  }
+}
+
+// INITIALIZE
+
+setTextContent('instructions', instructionText);
+startGame();
+
+// EVENT LISTENERS
 
 document.querySelector('.btn__check').addEventListener('click', function () {
-  const guess = Number(document.querySelector('.guess-input').value);
+  guess = Number(document.querySelector('.guess-input').value);
+  if (!isValidGuess()) {
+    return;
+  }
 
-  // If player guesses correctly (wins) ---------------------------------------
   if (guess === secretNumber) {
-    setTextContent('secret-number', secretNumber);
-    setTextContent('message', 'You guessed it! 🎉');
-    document.querySelector('body').style.background = '#60b347';
-    document.querySelector('.secret-number').style.width = '30rem';
-    if (currentScore > highScore) {
-      highScore = currentScore;
-      setTextContent('highscore', highScore);
-    }
+    winGame();
 
-  // If guess is invalid ---------------------------------------
-    // When there is no input
-  } else if (!guess) {
-    setTextContent('message', 'Please type a number into the box on the left');
-    // When guess is not between 1 - 20
-  } else if (guess > 20 || guess < 1) {
-    setTextContent('message', 'Number must be between 1 and 20');
-
-    // When input is a decimal
-  } else if (guess !== Math.trunc(guess)) {
-    setTextContent('message', 'Guess must be a whole number (no decimals)');
-
-  // If guess is valid but incorrect ---------------------------------------
   } else {
     setTextContent('message', guess > secretNumber ? 'Too high!' : 'Too low!');
-
     if (currentScore > 1) {
       currentScore -= 1;
       setTextContent('score', currentScore);
-
     } else {
-      currentScore = 0;
-      setTextContent('score', currentScore);
-      setTextContent('secret-number', secretNumber);
-      setTextContent('message', 'You lost the game 😱️');
+      loseGame();
     }
   }
 });
 
 document.querySelector('.btn__restart').addEventListener('click', function () {
-  generateNewSecretNumber();
-  setTextContent('secret-number', '?');
-  currentScore = 20;
-  document.querySelector('.guess-input').value = '';
-  setTextContent('score', currentScore);
-  setTextContent('message', initialMessage);
-  document.querySelector('.secret-number').style.width = '15rem';
-  document.querySelector('body').style.backgroundColor = '#0f0a1e';
+  startGame();
 });
