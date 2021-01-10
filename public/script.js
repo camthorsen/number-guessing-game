@@ -23,7 +23,7 @@ function isValidGuess() {
     setTextContent('message', `Number must be between 1 and ${range}`);
     return false;
   }
-  // When input is a decimal
+  // When input is not an integer
   if (guess !== Math.trunc(guess)) {
     setTextContent('message', 'Guess must be a whole number (no decimals)');
     return false;
@@ -36,14 +36,12 @@ function generateNewSecretNumber() {
 }
 
 function loseGame() {
-  currentScore = 0;
-  setTextContent('score', currentScore);
   setTextContent('secret-number', secretNumber);
   setTextContent('message', 'You lost the game 😱️');
 }
 
 function setTextContent(targetClass, newContent) {
-  return document.querySelector(`.${targetClass}`).textContent = newContent;
+  document.querySelector(`.${targetClass}`).textContent = newContent;
 }
 
 function startGame() {
@@ -85,11 +83,10 @@ document.querySelector('.btn__check').addEventListener('click', function () {
     winGame();
 
   } else {
+    currentScore = Math.max(currentScore - 1, 0);
     setTextContent('message', guess > secretNumber ? 'Too high!' : 'Too low!');
-    if (currentScore > 1) {
-      currentScore -= 1;
-      setTextContent('score', currentScore);
-    } else {
+    setTextContent('score', currentScore);
+    if (currentScore === 0) {
       loseGame();
     }
   }
