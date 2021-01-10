@@ -5,14 +5,14 @@
 const range = 5;
 const instructionText = `Type a number between 1 and ${range}`;
 
-// STATE
+// STATE --------
 
 let currentScore;
 let guess = Number(document.querySelector('.guess-input').value);
 let highScore = 0;
 let secretNumber;
 
-// FUNCTIONS
+// FUNCTIONS --------
 
 function isValidGuess() {
   // When there is no input
@@ -68,12 +68,12 @@ function winGame() {
   }
 }
 
-// INITIALIZE
+// INITIALIZE --------
 
 setTextContent('instructions', instructionText);
 startGame();
 
-// EVENT LISTENERS
+// EVENT LISTENERS --------
 
 document.querySelector('.btn__check').addEventListener('click', function () {
   guess = Number(document.querySelector('.guess-input').value);
@@ -106,7 +106,7 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelectorAll('.close-modal');
 const btnShowModal = document.querySelector('.show-modal');
 
-// FUNCTIONS
+// FUNCTIONS --------
 
 function closeModal () {
   modal.classList.add('hidden');
@@ -118,7 +118,7 @@ function showModal () {
   overlay.classList.remove('hidden');
 }
 
-// EVENT LISTENERS
+// EVENT LISTENERS --------
 
 for (let i = 0; i < btnCloseModal.length; i += 1) {
   btnCloseModal[i].addEventListener('click', closeModal);
@@ -127,3 +127,11 @@ for (let i = 0; i < btnCloseModal.length; i += 1) {
 btnShowModal.addEventListener('click', showModal);
 
 overlay.addEventListener('click', closeModal);
+
+// Global event listeners
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
