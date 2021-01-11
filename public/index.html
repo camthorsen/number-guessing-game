@@ -20,7 +20,7 @@
   </header>
   <main>
       <section class="left">
-          <p class="instructions"></p>
+          <p class="instructions">Type a number between 1 and <span class="range"></span></p>
           <input type="number" class="guess-input" />
           <button class="btn btn__check">Check</button>
       </section>
@@ -40,10 +40,10 @@
     <div class="text-container">
       <div>
         <p>
-          It's easy! Guess a number between 1 and 20, and type it into the yellow rectangle, then click "Check".
+          It's easy! Guess a number between 1 and <span class="range"></span>, and type it into the yellow rectangle, then click "Check".
         </p>
         <p>
-          You start off with a score of 20. With each incorrect guess, your score goes down by 1. The goal is to guess
+          You start off with a score of <span class="range"></span>. With each incorrect guess, your score goes down by 1. The goal is to guess
           the correct number in as few guesses as possible.
         </p>
         <p>You can play again using the "Restart" button, and the game will keep track of your highest score.</p>

@@ -2,8 +2,8 @@
 
 /* --------------- GAME SCRIPT ---------------  */
 
-const range = 5;
-const instructionText = `Type a number between 1 and ${range}`;
+const range = 20;
+const rangeDisplayTexts = document.querySelectorAll('.range');
 
 // STATE --------
 
@@ -70,7 +70,10 @@ function winGame() {
 
 // INITIALIZE --------
 
-setTextContent('instructions', instructionText);
+for (let i = 0; i < rangeDisplayTexts.length; i += 1) {
+  rangeDisplayTexts[i].textContent = range;
+}
+
 startGame();
 
 // EVENT LISTENERS --------
