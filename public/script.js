@@ -1,16 +1,18 @@
 'use strict';
 
-const range = 5;
-const instructionText = `Type a number between 1 and ${range}`;
+/* --------------- GAME SCRIPT ---------------  */
 
-// STATE
+const range = 20;
+const rangeDisplayTexts = document.querySelectorAll('.range');
+
+// STATE --------
 
 let currentScore;
 let guess = Number(document.querySelector('.guess-input').value);
 let highScore = 0;
 let secretNumber;
 
-// FUNCTIONS
+// FUNCTIONS --------
 
 function isValidGuess() {
   // When there is no input
@@ -66,12 +68,15 @@ function winGame() {
   }
 }
 
-// INITIALIZE
+// INITIALIZE --------
 
-setTextContent('instructions', instructionText);
+for (let i = 0; i < rangeDisplayTexts.length; i += 1) {
+  rangeDisplayTexts[i].textContent = range;
+}
+
 startGame();
 
-// EVENT LISTENERS
+// EVENT LISTENERS --------
 
 document.querySelector('.btn__check').addEventListener('click', function () {
   guess = Number(document.querySelector('.guess-input').value);
@@ -94,4 +99,42 @@ document.querySelector('.btn__check').addEventListener('click', function () {
 
 document.querySelector('.btn__restart').addEventListener('click', function () {
   startGame();
+});
+
+
+/* --------------- MODAL SCRIPT ---------------  */
+
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelectorAll('.close-modal');
+const btnShowModal = document.querySelector('.show-modal');
+
+// FUNCTIONS --------
+
+function closeModal () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
+function showModal () {
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+}
+
+// EVENT LISTENERS --------
+
+for (let i = 0; i < btnCloseModal.length; i += 1) {
+  btnCloseModal[i].addEventListener('click', closeModal);
+}
+
+btnShowModal.addEventListener('click', showModal);
+
+overlay.addEventListener('click', closeModal);
+
+// Global event listeners
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
 });
