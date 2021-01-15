@@ -106,8 +106,8 @@ document.querySelector('.btn__restart').addEventListener('click', function () {
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelectorAll('.close-modal');
-const btnShowModal = document.querySelector('.show-modal');
+const modalClosers = document.querySelectorAll('.close-modal');
+const modalOpenerBtn = document.querySelector('.show-modal');
 
 // FUNCTIONS --------
 
@@ -123,11 +123,11 @@ function showModal () {
 
 // EVENT LISTENERS --------
 
-for (let i = 0; i < btnCloseModal.length; i += 1) {
-  btnCloseModal[i].addEventListener('click', closeModal);
+for (let i = 0; i < modalClosers.length; i += 1) {
+  modalClosers[i].addEventListener('click', closeModal);
 }
 
-btnShowModal.addEventListener('click', showModal);
+modalOpenerBtn.addEventListener('click', showModal);
 
 overlay.addEventListener('click', closeModal);
 
