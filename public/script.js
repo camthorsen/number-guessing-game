@@ -106,7 +106,7 @@ document.querySelector('.btn__restart').addEventListener('click', function () {
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
-const modalClosers = document.querySelectorAll('.close-modal');
+const modalClosers = document.querySelectorAll('[data-close-modal]');
 const modalOpenerBtn = document.querySelector('.show-modal');
 
 // FUNCTIONS --------
@@ -128,8 +128,6 @@ for (let i = 0; i < modalClosers.length; i += 1) {
 }
 
 modalOpenerBtn.addEventListener('click', showModal);
-
-overlay.addEventListener('click', closeModal);
 
 // Global event listeners
 

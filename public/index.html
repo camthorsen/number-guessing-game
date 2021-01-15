@@ -34,8 +34,8 @@
   </main>
 
   <!-- Modal -->
-  <div class="modal hidden">
-    <button class="btn btn__close-modal close-modal">&times;</button>
+  <div class="modal hidden" data-modal>
+    <button class="btn btn__close-modal" data-close-modal>&times;</button>
     <h2>How to play</h2>
     <div class="text-container">
       <div>
@@ -50,10 +50,10 @@
       </div>
     </div>
     <div class="btn__row">
-      <button class="btn btn__modal-start close-modal">I'm ready to play!</button>
+      <button class="btn btn__modal-start" data-close-modal>I'm ready to play!</button>
     </div>
   </div>
-  <div class="overlay hidden"></div>
+  <div class="overlay hidden" data-close-modal></div>
 
   <script src="script.js"></script>
 </body>
